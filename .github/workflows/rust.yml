@@ -1,0 +1,36 @@
+name: Rust
+on: workflow_dispatch
+
+jobs:
+  lints:
+    runs-on: self-hosted  # Specifies that this job runs on any self-hosted runner
+    name: Lints
+    steps:
+      - name: Run sccache-cache
+        uses: mozilla-actions/sccache-action@v0.0.9
+
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+          components: rustfmt, clippy
+
+      - name: Run cargo fmt
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+
+      - name: Run cargo clippy
+        uses: actions-rs/cargo@v1
+        env:
+          SCCACHE_REDIS: "redis://redis"
+          RUSTC_WRAPPER: "sccache"
+        with:
+          command: clippy
+          args: --all-features
