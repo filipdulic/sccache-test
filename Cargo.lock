@@ -257,6 +257,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "approx"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cab112f0a86d568ea0e627cc1d6be74a1e9cd55214684db5561995f6dad897c6"
+dependencies = [
+ "num-traits",
+]
+
+[[package]]
 name = "arbitrary"
 version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -563,6 +572,12 @@ dependencies = [
  "quote",
  "syn 2.0.104",
 ]
+
+[[package]]
+name = "async_once"
+version = "0.2.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2ce4f10ea3abcd6617873bae9f91d1c5332b4a778bd9ce34d0cd517474c1de82"
 
 [[package]]
 name = "atomic-waker"
@@ -1247,6 +1262,44 @@ dependencies = [
  "cc",
  "pkg-config",
 ]
+
+[[package]]
+name = "cached"
+version = "0.43.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bc2fafddf188d13788e7099295a59b99e99b2148ab2195cae454e754cc099925"
+dependencies = [
+ "async-trait",
+ "async_once",
+ "cached_proc_macro",
+ "cached_proc_macro_types",
+ "futures",
+ "hashbrown 0.13.2",
+ "instant",
+ "lazy_static",
+ "once_cell",
+ "thiserror 1.0.69",
+ "tokio",
+]
+
+[[package]]
+name = "cached_proc_macro"
+version = "0.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e10ca87c81aaa3a949dbbe2b5e6c2c45dbc94ba4897e45ea31ff9ec5087be3dc"
+dependencies = [
+ "cached_proc_macro_types",
+ "darling 0.14.4",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "cached_proc_macro_types"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ade8366b8bd5ba243f0a58f036cc0ca8a2f069cff1a2351ef1cac6b083e16fc0"
 
 [[package]]
 name = "camino"
@@ -3939,6 +3992,62 @@ dependencies = [
 ]
 
 [[package]]
+name = "iota-json-rpc"
+version = "1.4.0-alpha"
+source = "git+https://github.com/iotaledger/iota#efc8f065d2a3ba594c8cfec6677554b1ca90a6a0"
+dependencies = [
+ "anyhow",
+ "arc-swap",
+ "async-trait",
+ "axum 0.8.4",
+ "backoff",
+ "bcs",
+ "cached",
+ "chrono",
+ "eyre",
+ "fastcrypto",
+ "futures",
+ "http-body",
+ "hyper",
+ "indexmap 2.10.0",
+ "iota-config",
+ "iota-core",
+ "iota-json",
+ "iota-json-rpc-api",
+ "iota-json-rpc-types",
+ "iota-mainnet-unlocks",
+ "iota-metrics",
+ "iota-names",
+ "iota-open-rpc",
+ "iota-open-rpc-macros",
+ "iota-protocol-config",
+ "iota-storage",
+ "iota-transaction-builder",
+ "iota-types",
+ "itertools 0.13.0",
+ "jsonrpsee",
+ "move-binary-format",
+ "move-bytecode-utils",
+ "move-core-types",
+ "move-package",
+ "once_cell",
+ "prometheus",
+ "serde",
+ "serde_json",
+ "shared-crypto",
+ "signature 1.6.4",
+ "statrs",
+ "tap",
+ "thiserror 1.0.69",
+ "tokio",
+ "tokio-util 0.7.15",
+ "tower 0.4.13",
+ "tower-http 0.5.2",
+ "tracing",
+ "typed-store-error",
+]
+
+[[package]]
 name = "iota-json-rpc-api"
 version = "1.4.0-alpha"
 source = "git+https://github.com/iotaledger/iota#efc8f065d2a3ba594c8cfec6677554b1ca90a6a0"
@@ -4019,6 +4128,19 @@ dependencies = [
  "iota-proc-macros",
  "once_cell",
  "tracing",
+]
+
+[[package]]
+name = "iota-mainnet-unlocks"
+version = "1.4.0-alpha"
+source = "git+https://github.com/iotaledger/iota#efc8f065d2a3ba594c8cfec6677554b1ca90a6a0"
+dependencies = [
+ "anyhow",
+ "chrono",
+ "csv",
+ "regex",
+ "serde",
+ "tempfile",
 ]
 
 [[package]]
@@ -4172,6 +4294,57 @@ dependencies = [
  "tower 0.4.13",
  "tower-http 0.5.2",
  "tracing",
+]
+
+[[package]]
+name = "iota-node"
+version = "1.4.0-alpha"
+source = "git+https://github.com/iotaledger/iota#efc8f065d2a3ba594c8cfec6677554b1ca90a6a0"
+dependencies = [
+ "anemo",
+ "anemo-tower",
+ "anyhow",
+ "arc-swap",
+ "axum 0.8.4",
+ "base64 0.21.7",
+ "bcs",
+ "bin-version",
+ "clap",
+ "const-str",
+ "fastcrypto",
+ "fastcrypto-zkp",
+ "futures",
+ "git-version",
+ "humantime",
+ "iota-archival",
+ "iota-common",
+ "iota-config",
+ "iota-core",
+ "iota-json-rpc",
+ "iota-json-rpc-api",
+ "iota-macros",
+ "iota-metrics",
+ "iota-names",
+ "iota-network",
+ "iota-network-stack",
+ "iota-protocol-config",
+ "iota-rest-api",
+ "iota-simulator",
+ "iota-snapshot",
+ "iota-storage",
+ "iota-tls",
+ "iota-types",
+ "move-vm-profiler",
+ "prometheus",
+ "reqwest",
+ "serde",
+ "tap",
+ "telemetry-subscribers",
+ "tokio",
+ "tower 0.4.13",
+ "tracing",
+ "typed-store",
+ "url",
 ]
 
 [[package]]
@@ -4409,6 +4582,34 @@ dependencies = [
  "telemetry-subscribers",
  "tempfile",
  "tower 0.4.13",
+ "tracing",
+]
+
+[[package]]
+name = "iota-snapshot"
+version = "1.4.0-alpha"
+source = "git+https://github.com/iotaledger/iota#efc8f065d2a3ba594c8cfec6677554b1ca90a6a0"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "byteorder",
+ "bytes",
+ "fastcrypto",
+ "futures",
+ "indicatif",
+ "integer-encoding",
+ "iota-config",
+ "iota-core",
+ "iota-protocol-config",
+ "iota-storage",
+ "iota-types",
+ "num_enum",
+ "object_store",
+ "prometheus",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tokio-stream",
  "tracing",
 ]
 
@@ -5214,6 +5415,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "47e1ffaa40ddd1f3ed91f717a33c8c0ee23fff369e3aa8772b9605cc1d22f4c3"
 
 [[package]]
+name = "matrixmultiply"
+version = "0.3.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a06de3016e9fae57a36fd14dba131fccf49f74b40b7fbdb472f96e361ec71a08"
+dependencies = [
+ "autocfg",
+ "rawpointer",
+]
+
+[[package]]
 name = "md-5"
 version = "0.10.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5891,6 +6102,35 @@ name = "naive-timer"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "034a0ad7deebf0c2abcf2435950a6666c3c15ea9d8fad0c0f48efa8a7f843fed"
+
+[[package]]
+name = "nalgebra"
+version = "0.32.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b5c17de023a86f59ed79891b2e5d5a94c705dbe904a5b5c9c952ea6221b03e4"
+dependencies = [
+ "approx",
+ "matrixmultiply",
+ "nalgebra-macros",
+ "num-complex",
+ "num-rational",
+ "num-traits",
+ "rand 0.8.5",
+ "rand_distr",
+ "simba",
+ "typenum",
+]
+
+[[package]]
+name = "nalgebra-macros"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "254a5372af8fc138e36684761d3c0cdb758a4410e938babcff1c860ce14ddbfc"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.104",
+]
 
 [[package]]
 name = "named-lock"
@@ -7304,6 +7544,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "rand_distr"
+version = "0.4.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "32cb0b9bc82b0a0876c2dd994a7e7a2683d3e7390ca40e6886785ef0c7e3ee31"
+dependencies = [
+ "num-traits",
+ "rand 0.8.5",
+]
+
+[[package]]
 name = "rand_hc"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -7356,6 +7606,12 @@ checksum = "c6df7ab838ed27997ba19a4664507e6f82b41fe6e20be42929332156e5e85146"
 dependencies = [
  "bitflags 2.9.1",
 ]
+
+[[package]]
+name = "rawpointer"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "60a357793950651c4ed0f3f52338f53b2f809f32d83a07f72909fa13e4c6c1e3"
 
 [[package]]
 name = "rayon"
@@ -7850,7 +8106,7 @@ dependencies = [
 name = "sccache-test"
 version = "0.1.0"
 dependencies = [
- "iota-core",
+ "iota-node",
 ]
 
 [[package]]
@@ -8315,6 +8571,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "simba"
+version = "0.8.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "061507c94fc6ab4ba1c9a0305018408e312e17c041eb63bef8aa726fa33aceae"
+dependencies = [
+ "approx",
+ "num-complex",
+ "num-traits",
+ "paste",
+ "wide",
+]
+
+[[package]]
 name = "simd-adler32"
 version = "0.3.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -8482,6 +8751,18 @@ name = "static_assertions"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
+
+[[package]]
+name = "statrs"
+version = "0.17.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f697a07e4606a0a25c044de247e583a330dbb1731d11bc7350b81f48ad567255"
+dependencies = [
+ "approx",
+ "nalgebra",
+ "num-traits",
+ "rand 0.8.5",
+]
 
 [[package]]
 name = "stronghold-derive"
@@ -9031,6 +9312,8 @@ dependencies = [
  "futures-core",
  "futures-io",
  "futures-sink",
+ "futures-util",
+ "hashbrown 0.15.4",
  "pin-project-lite",
  "tokio",
 ]
